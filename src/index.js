@@ -3,6 +3,7 @@ import reportWebVitals from './reportWebVitals';
 import { vectorData, extent } from './data';
 import kriging from "@sakitam-gis/kriging";
 import WindGL from './wind/index';
+import * as dat from 'dat.gui';
 const width = 512;
 const height = 512;
 var glCanvas = document.createElement('canvas'); // eslint-disable-line
@@ -27,6 +28,15 @@ function frame() {
   requestAnimationFrame(frame);
 }
 frame();
+
+// add options toggle GUI
+const gui = new dat.GUI();
+gui.add(wind, 'numParticles', 144, 248832);
+gui.add(wind, 'fadeOpacity', 0.96, 0.999).step(0.001).updateDisplay();
+gui.add(wind, 'speedFactor', 0.05, 1.0);
+gui.add(wind, 'dropRate', 0, 0.1);
+gui.add(wind, 'dropRateBump', 0, 0.2);
+
 if (pxRatio !== 1) {
   meta['retina resolution'] = true;
 }
