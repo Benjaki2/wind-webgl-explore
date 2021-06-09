@@ -46,10 +46,8 @@ export default class WindTile {
         const img = document.createElement('img');
         this.windData = this.organizeData(img);
        
-        img.onload = () => {
          this.wind.setWind(this.windData);
-         this.callback();
-        };
+        
         
         
     }
@@ -90,20 +88,21 @@ export default class WindTile {
         const variogram_x = kriging.train(vx, x, y, "exponential", 0, 100);
         const variogram_y = kriging.train(vy, x, y, "exponential", 0, 100);
         
-        
+
+        var data = new Uint8Array(width*height*4);
         for (let y = 0; y < height; y++) {
-          for (let x = 0; x < width; x++) {
-              var vxpredicted = kriging.predict(x, y, variogram_x);
-              var vypredicted = kriging.predict(x, y, variogram_y);
-              const r = Math.floor(255 * (vxpredicted - vxMin) / (vxMax - vxMin));
-              const g = Math.floor(255 * (vypredicted - vyMin) / (vyMax - vyMin));
-              ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x, y);
-          }
+            for (let x = 0; x < width; x++) {
+                const i = (y * width + x) * 4;
+                var vxpredicted = kriging.predict(x, y, variogram_x);
+                var vypredicted = kriging.predict(x, y, variogram_y);
+                data[i + 0] = Math.floor(255 * (vxpredicted - vxMin) / (vxMax - vxMin));
+                data[i + 1] = Math.floor(255 * (vypredicted - vyMin) / (vyMax - vyMin));
+                data[i + 2] = 0;
+                data[i + 3] = 255;
+            }
         }
-        const imgData = canvas.toDataURL("image/png");
-        img.src = imgData;
         const windData = {
-            image: img,
+            image: data,
             "uMin": vxMin,
             "uMax": vxMax,
             "vMin": vyMin,
@@ -111,7 +110,6 @@ export default class WindTile {
             width: deltaLong,
             height: deltaLat
           }
-            console.log(deltaLong,deltaLat)
         return windData;
     }
     frame() {
