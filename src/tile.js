@@ -1,10 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { vectorData, extent } from './data';
 import kriging from "@sakitam-gis/kriging";
-import { convert, encode } from './util';
 import WindGL from './wind/index';
 
 
@@ -13,20 +7,22 @@ export default class WindTile {
     constructor(data, extent, options) {
         this.extent = extent;
         this.data = data;
+        this.options = options;
         this.width = options.width || 512;
         this.height = options.height || 512;
         this.glCanvas = options.canvas ||  document.createElement('canvas');
         this.gl = options.gl || this.glCanvas.getContext('webgl', {antialiasing: false});
         this.offset = options.offset || [0,0];
         this.pxRatio = Math.max(Math.floor(window.devicePixelRatio) || 1, 2);
-        this.deltaLong = extent[2] -extent[0];
-        this.deltaLat = extent[3] -extent[1];
+        this.deltaLong = extent[2] - extent[0];
+        this.deltaLat = extent[3] - extent[1];
         this.longMin = extent[0]
         this.latMin = extent[1];
         this.meta = options.meta || {};
         this.parent = options.parent || document.getElementById('root');
         this.init();
         this.callback = options.callback;
+        console.log(this.deltaLong, this.deltaLat)
     }
     init() {
         this.parent.appendChild(this.glCanvas);
@@ -43,17 +39,14 @@ export default class WindTile {
         if (this.pxRatio !== 1) {
             this.meta['retina resolution'] = true;
         }
-        const img = document.createElement('img');
-        this.windData = this.organizeData(img);
-       
+        this.windData = this.organizeData();
+       console.log(this.longMin, this.latMin)
          this.wind.setWind(this.windData);
         
         
         
     }
-    organizeData(img) {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
+    organizeData() {
         const vectorData = this.data;
         const longMin = this.longMin;
         const latMin = this.latMin;
@@ -61,9 +54,7 @@ export default class WindTile {
         const deltaLat = this.deltaLat;
         const width = this.width;
         const height = this.height;
-        
-        canvas.width  = this.width;
-        canvas.height = this.height;
+        const options = this.options;
         
         const NUM_POINTS = this.data.length;
         
@@ -80,11 +71,13 @@ export default class WindTile {
             
             vx[i] = (Math.sin(direction) / magnitude);
             vy[i] = (Math.cos(direction) / magnitude);
+            if(i<21) {console.log(flatCoordinates[0], longMin, deltaLong, width)
+                console.log(x[i])}
         };
-        const vxMax = Math.max(...vx);
-        const vyMax = Math.max(...vy);
-        const vxMin = Math.min(...vx);
-        const vyMin = Math.min(...vy);
+        const vxMax = options.vxMax || Math.max(...vx);
+        const vyMax = options.vyMax || Math.max(...vy);
+        const vxMin = options.vxMin || Math.min(...vx);
+        const vyMin = options.vyMin || Math.min(...vy);
         const variogram_x = kriging.train(vx, x, y, "exponential", 0, 100);
         const variogram_y = kriging.train(vy, x, y, "exponential", 0, 100);
         
