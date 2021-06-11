@@ -52,8 +52,8 @@ export default class WindTile {
         const latMin = this.latMin;
         const deltaLong = this.deltaLong;
         const deltaLat = this.deltaLat;
-        const width = this.width;
-        const height = this.height;
+        const width = 1024 ;
+        const height = 512;
         const options = this.options;
         
         const NUM_POINTS = this.data.length;
@@ -67,7 +67,7 @@ export default class WindTile {
             const magnitude = vectorData[i].properties_.Magnitude;
             const direction = vectorData[i].properties_.Direction;
             x[i] = ((flatCoordinates[0] - longMin) / deltaLong ) * width;
-            y[i] = height - (((flatCoordinates[1] - latMin) / deltaLat ) * height);
+            y[i] = (((flatCoordinates[1] - latMin) / deltaLat ) * height);
             
             vx[i] = (Math.sin(direction) / magnitude);
             vy[i] = (Math.cos(direction) / magnitude);
@@ -80,19 +80,30 @@ export default class WindTile {
         const vyMin = options.vyMin || Math.min(...vy);
         const variogram_x = kriging.train(vx, x, y, "exponential", 0, 100);
         const variogram_y = kriging.train(vy, x, y, "exponential", 0, 100);
-        
-        var data = new Uint8Array(width*height*4);
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.height = this.height;
+        canvas.width = this.width;
+        var data = new Uint8Array(this.width*this.height*4);
+        const img = document.createElement('img');
         for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
                 const i = (y * width + x) * 4;
                 var vxpredicted = kriging.predict(x, y, variogram_x);
                 var vypredicted = kriging.predict(x, y, variogram_y);
-                data[i + 0] = Math.floor(255 * (vxpredicted - vxMin) / (vxMax - vxMin));
-                data[i + 1] = Math.floor(255 * (vypredicted - vyMin) / (vyMax - vyMin));
+                const r = Math.floor(255 * (vxpredicted - vxMin) / (vxMax - vxMin));
+                const g =Math.floor(255 * (vypredicted - vyMin) / (vyMax - vyMin));
+                data[i + 0] = r;
+                data[i + 1] = g;
                 data[i + 2] = 0;
                 data[i + 3] = 255;
             }
         }
+        // const imgData =canvas.toDataURL("image/png");
+        // img.src = imgData;
+        // this.parent.appendChild(img);
+
+
         const windData = {
             image: data,
             "uMin": vxMin,

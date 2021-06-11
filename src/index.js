@@ -5,7 +5,7 @@ import * as dat from 'dat.gui';
 import './App.css';
 const options = {
     width: 512 * 2,
-    height: 512
+    height: 512 * 2
 }
 const extentFull = [extent[0],extent[1],secondExtent[2],extent[3]]
 const data = secondVectorData.concat(vectorData);
