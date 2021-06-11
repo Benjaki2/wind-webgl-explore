@@ -2,13 +2,13 @@
 import { vectorData, secondVectorData, secondExtent, extent } from './data';
 import WindTile from './tile';
 import * as dat from 'dat.gui';
+import './App.css';
 const options = {
     width: 512 * 2,
     height: 512
 }
-const extentFull = [extent[0],extent[1],secondExtent[2],secondExtent[3]]
-const data = vectorData.concat(secondVectorData);
-console.log(extentFull)
+const extentFull = [extent[0],extent[1],secondExtent[2],extent[3]]
+const data = secondVectorData.concat(vectorData);
 const windTile = new WindTile(data, extentFull, options);
 // const secondOptions = {
 //     offset: [512,0],
@@ -41,9 +41,9 @@ const gui = new dat.GUI();
     gui.add(wind, 'speedFactor', 0.05, 1.0);
     gui.add(wind, 'dropRate', 0, 0.1);
     gui.add(wind, 'dropRateBump', 0, 0.2);
-    // gui.add(wind.windData, 'uMin', -360, 0).setValue(uMin);
-    // gui.add(wind.windData, 'uMax', 0, 360).setValue(uMax);
-    // gui.add(wind.windData, 'vMin', -360, 0).setValue(vMin);
-    // gui.add(wind.windData, 'vMax', 0, 360).setValue(vMax);
+    gui.add(wind.windData, 'uMin', -360, 0)
+    gui.add(wind.windData, 'uMax', 0, 360)
+    gui.add(wind.windData, 'vMin', -360, 0)
+    gui.add(wind.windData, 'vMax', 0, 360)
 // })
 

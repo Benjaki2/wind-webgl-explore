@@ -10,14 +10,8 @@ import screenFrag from './shaders/screen.frag.glsl';
 import updateFrag from './shaders/update.frag.glsl';
 
 const defaultRampColors = {
-    0.0: '#3288bd',
-    0.1: '#66c2a5',
-    0.2: '#abdda4',
-    0.3: '#e6f598',
-    0.4: '#fee08b',
-    0.5: '#fdae61',
-    0.6: '#f46d43',
-    1.0: '#d53e4f'
+    0.0: '#fff',
+    1.0: '#000'
 };
 
 export default class WindGL {

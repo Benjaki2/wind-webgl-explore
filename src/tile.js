@@ -40,8 +40,7 @@ export default class WindTile {
             this.meta['retina resolution'] = true;
         }
         this.windData = this.organizeData();
-       console.log(this.longMin, this.latMin)
-         this.wind.setWind(this.windData);
+        this.wind.setWind(this.windData);
         
         
         
@@ -81,7 +80,6 @@ export default class WindTile {
         const variogram_x = kriging.train(vx, x, y, "exponential", 0, 100);
         const variogram_y = kriging.train(vy, x, y, "exponential", 0, 100);
         
-
         var data = new Uint8Array(width*height*4);
         for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
@@ -94,6 +92,13 @@ export default class WindTile {
                 data[i + 3] = 255;
             }
         }
+        console.log(data);
+        const img = new Image();
+        
+        img.src = URL.createObjectURL(
+            new Blob([data], { type: 'image/png' } /* (1) */)
+          );
+          this.parent.appendChild(img)
         const windData = {
             image: data,
             "uMin": vxMin,
