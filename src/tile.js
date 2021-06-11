@@ -67,12 +67,12 @@ export default class WindTile {
             const magnitude = vectorData[i].properties_.Magnitude;
             const direction = vectorData[i].properties_.Direction;
             x[i] = ((flatCoordinates[0] - longMin) / deltaLong ) * width;
-            y[i] = ((flatCoordinates[1] - latMin) / deltaLat ) * height;
+            y[i] = height - (((flatCoordinates[1] - latMin) / deltaLat ) * height);
             
             vx[i] = (Math.sin(direction) / magnitude);
             vy[i] = (Math.cos(direction) / magnitude);
-            if(i<21) {console.log(flatCoordinates[0], longMin, deltaLong, width)
-                console.log(x[i])}
+            if(i<21) {console.log(flatCoordinates)
+                console.log(y[i])}
         };
         const vxMax = options.vxMax || Math.max(...vx);
         const vyMax = options.vyMax || Math.max(...vy);
