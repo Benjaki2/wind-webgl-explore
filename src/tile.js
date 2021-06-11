@@ -92,13 +92,6 @@ export default class WindTile {
                 data[i + 3] = 255;
             }
         }
-        console.log(data);
-        const img = new Image();
-        
-        img.src = URL.createObjectURL(
-            new Blob([data], { type: 'image/png' } /* (1) */)
-          );
-          this.parent.appendChild(img)
         const windData = {
             image: data,
             "uMin": vxMin,
