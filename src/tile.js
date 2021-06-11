@@ -8,14 +8,15 @@ export default class WindTile {
         this.extent = extent;
         this.data = data;
         this.options = options;
+        this.visibleExtent = [-180, -90, 180, 90];
         this.width = options.width || 512;
         this.height = options.height || 512;
         this.glCanvas = options.canvas ||  document.createElement('canvas');
         this.gl = options.gl || this.glCanvas.getContext('webgl', {antialiasing: false});
         this.offset = options.offset || [0,0];
         this.pxRatio = Math.max(Math.floor(window.devicePixelRatio) || 1, 2);
-        this.deltaLong = extent[2] - extent[0];
-        this.deltaLat = extent[3] - extent[1];
+        this.deltaLong = Math.abs(extent[2] - extent[0]);
+        this.deltaLat = Math.abs(extent[3] - extent[1]);
         this.longMin = extent[0]
         this.latMin = extent[1];
         this.meta = options.meta || {};
