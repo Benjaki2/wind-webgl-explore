@@ -11,6 +11,7 @@ export const secondExtent = [
     396,
     90
 ];
+export const resolution = 0.5625;
 export const secondVectorData = [
     {
         "type_": "Point",

@@ -4,8 +4,12 @@ import WindTile from './tile';
 import * as dat from 'dat.gui';
 import './App.css';
 const options = {
-    width: 512 * 2,
-    height: 512 * 2
+    width: 640,
+    height: 320,
+    uMin: -162,
+    uMax: 100,
+    vMin: -112,
+    vMax: 294
 }
 const extentFull = [extent[0],extent[1],secondExtent[2],extent[3]]
 const data = secondVectorData.concat(vectorData);
@@ -36,14 +40,15 @@ const gui = new dat.GUI();
 
 // windTiles.forEach(tile => {
     const wind = windTile.wind;
+    console.log()
     gui.add(wind, 'numParticles', 144, 248832);
     gui.add(wind, 'fadeOpacity', 0.96, 0.999).step(0.001).updateDisplay();
     gui.add(wind, 'speedFactor', 0.05, 1.0);
     gui.add(wind, 'dropRate', 0, 0.1);
     gui.add(wind, 'dropRateBump', 0, 0.2);
-    gui.add(wind.windData, 'uMin', -360, 0)
-    gui.add(wind.windData, 'uMax', 0, 360)
-    gui.add(wind.windData, 'vMin', -360, 0)
-    gui.add(wind.windData, 'vMax', 0, 360)
+    // gui.add(wind.windData, 'uMin', -360, 0)
+    // gui.add(wind.windData, 'uMax', 0, 360)
+    // gui.add(wind.windData, 'vMin', -360, 0)
+    // gui.add(wind.windData, 'vMax', 0, 360)
 // })
 
