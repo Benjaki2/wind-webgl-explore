@@ -4,9 +4,7 @@ import Image from './wind/img.png';
 
 
 export default class WindTile {
-    constructor(data, extent, options) {
-        this.extent = extent;
-        this.data = data;
+    constructor(options) {
         this.options = options;
         this.visibleExtent = [-180, -90, 180, 90];
         this.width = options.width || 512;
@@ -15,58 +13,61 @@ export default class WindTile {
         this.gl = options.gl || this.glCanvas.getContext('webgl', {antialiasing: false});
         this.offset = options.offset || [0,0];
         this.pxRatio = Math.max(Math.floor(window.devicePixelRatio) || 1, 2);
-        this.deltaLong = Math.abs(extent[2] - extent[0]);
-        this.deltaLat = Math.abs(extent[3] - extent[1]);
-        this.longMin = extent[0]
-        this.latMin = extent[1];
         this.meta = options.meta || {};
         this.parent = options.parent || document.getElementById('root');
+        this.glCanvas.id = 'gl-canvas';
         this.init();
         this.callback = options.callback;
         console.log(this.deltaLong, this.deltaLat)
     }
     init() {
         this.parent.appendChild(this.glCanvas);
-        
-        
         this.glCanvas.width = this.width;
         this.glCanvas.height = this.height;
         this.gl.width = this.width;
         this.gl.height = this.height;
         
-        const wind = this.wind = window.wind = new WindGL(this.gl);
+        this.wind = window.wind = new WindGL(this.gl);
         this.wind.numParticles = 11024;
         this.frame();
         if (this.pxRatio !== 1) {
             this.meta['retina resolution'] = true;
         }
-        const windData = this.windData= this.organizeData();
-        windData.image.onload = ()  =>{
-            wind.setWind(windData);
-        }
+        
+
         
         
         
         
     }
-    organizeData() {
-        const vectorData = this.data;
-        const longMin = -180;
-        const latMin = -90;
-        const deltaLong = 360;
-        const deltaLat = 180;
+    updateData(data, extent, options) {
+        const windData = this.windData= this.organizeData(data, extent,options);
+        windData.image.onload = ()  =>{
+            this.wind.setWind(windData);
+        }
+    }
+    stop() {
+        delete this.wind.windData;
+        this.gl.clearColor(0.0, 0, 0, 0.0);
+        this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+    }
+    organizeData(data, extent, options) {
+        const vectorData = data;
+        const longMin = extent[0];
+        const latMin = extent[1];
+        const deltaLong = extent[2]-extent[0];
+        const deltaLat = extent[3]-extent[1];
         const width = 360 ;
         const height = 180;
-        const options = this.options;
         
-        const NUM_POINTS = this.data.length;
+        const NUM_POINTS = data.length;
         var canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
         this.parent.appendChild(canvas);
 
         var ctx = canvas.getContext('2d');
-        const { uMin, vMin, uMax, vMax } = this.options;
+        const { uMin, vMin, uMax, vMax } = options;
         ctx.fillStyle = 'rgba(' +Math.floor(255 * Math.abs(0 - uMin) / (uMax - uMin))+','+ Math.floor(255 * Math.abs(0 - vMin) / (vMax - vMin)) +',0,250';
 
         ctx.fillRect(0, 0, width, height);
@@ -134,7 +135,7 @@ export default class WindTile {
     
         
         // img.src = imgData;
-        this.parent.appendChild(_img);
+        // this.parent.appendChild(_img);
 
 
         const windData = {
@@ -145,10 +146,6 @@ export default class WindTile {
             vMax,
             width: deltaLong,
             height: deltaLat
-            // "uMin": vxMin,
-            // "uMax": vxMax,
-            // "vMin": vyMin,
-            // "vMax": vyMax,
           }
         return windData;
     }

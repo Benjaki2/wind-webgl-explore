@@ -12,6 +12,16 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+#gl-canvas {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+}
+html, body, .map {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
