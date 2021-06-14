@@ -41,7 +41,6 @@ const data = secondVectorData.concat(vectorData);
 
 // windTiles.forEach(tile => {
     // const wind = windTile.wind;
-    // console.log()
     // gui.add(wind, 'numParticles', 144, 248832);
     // gui.add(wind, 'fadeOpacity', 0.96, 0.999).step(0.001).updateDisplay();
     // gui.add(wind, 'speedFactor', 0.05, 1.0);
@@ -124,35 +123,13 @@ const tileGridSizes = [
     })
   });
   
-   let i = 0;
-   let arrays = [];
-  source.on('tileloadstart', function(e) {  
-     i++
-     
-    });
-    let windRender;
-  source.on('tileloadend', function(e) {  
-      if(!windRender){
-            const mapSize = map.getSize(); 
-            const options = {
-                uMin: -162,
-                uMax: 100,
-                vMin: -112,
-                vMax: 294,
-                width: mapSize[0],
-                height:mapSize[1]
-            }
-          windRender = new WindTile(options);
-          
-      }
-    i--
-    arrays.push(e.tile.getFeatures());
-    if(i===1 && !windRender.stopped) {
-        windRender.stop() 
-    }
-    if(i=== 0){
-        const extent = map.getView().calculateExtent(map.getSize());
-        var merged = [].concat.apply([], arrays);
+let i = 0;
+source.on('tileloadstart', function(e) {  
+    i++
+});
+let windRender;
+source.on('tileloadend', function(e) {  
+    if(!windRender){
         const mapSize = map.getSize();
         const options = {
             uMin: -162,
@@ -162,18 +139,47 @@ const tileGridSizes = [
             width: mapSize[0],
             height:mapSize[1]
         }
-        setTimeout(function(){
-            windRender.updateData(merged, extent, options);
-        }, 1000);
-        arrays = [];
+        windRender = new WindTile(options);  
+    }
+    i--
+    if(i===1 && !windRender.stopped) {
+        windRender.stop() 
+    }
+    if(i=== 0 && !moving){
+        updateRenderer();
+    }
+    
+});
+let moving = false;
+map.getView().on('change:center', () =>{
+    windRender.stop()
+    moving = true;
+});
+map.getView().on('propertychange', (e) => {
+    if (e.key ==='resolution') {
+        windRender.stop()
+        moving = true
+    }
+});
+map.on('moveend', (e) => {
+    moving = false;
+    if(i === 0 ) updateRenderer();
+});
+const updateRenderer = () => {
 
-    } 
-  });
-//   map.getView().on('change:center', () =>{
-//       windRender.stop()
-//     });
-//     map.getView().on('propertychange', (e) => {
-//         if (e.key ==='resolution') {
-//             windRender.stop()
-//         }
-//       });
+    const mapSize = map.getSize();
+    const options = {
+        uMin: -162,
+        uMax: 100,
+        vMin: -112,
+        vMax: 294,
+        width: mapSize[0],
+        height:mapSize[1]
+    }
+    setTimeout(function(){
+        const extent = map.getView().calculateExtent(map.getSize());
+        const currentFeatures = vectorLayer.getSource().getFeaturesInExtent(extent);
+        windRender.updateData(currentFeatures, extent, options);
+    }, 1000);
+    
+}

@@ -19,7 +19,6 @@ export default class WindTile {
         this.stopped = false;
         this.init();
         this.callback = options.callback;
-        console.log(this.deltaLong, this.deltaLat)
     }
     init() {
         this.parent.appendChild(this.glCanvas);
@@ -101,9 +100,9 @@ export default class WindTile {
             }
 
             if(i<21) {
-                console.log(flatCoordinates)
-                console.log(x[i],y[i])
-                console.log(u[i],v[i])
+                // console.log(flatCoordinates)
+                // console.log(x[i],y[i])
+                // console.log(u[i],v[i])
             }
         };
 
