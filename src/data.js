@@ -1,6 +1,10 @@
 
-export const extent = [-180, -198, 108, 90];
-export const secondExtent = [108, -198, 396, 90];
+// export const extent = [-180, -198, 108, 90];
+// export const secondExtent = [108, -198, 396, 90];
+// export const extent = [-180, -198, 396, 90];
+// export const extent = [-180, -90, 180, 90];
+export const extent = [-180, -85.06, 180, 85.06];
+// export const secondExtent = [108, -198, 396, 90];
 export const secondVectorData = [
     {
         "type_": "Point",

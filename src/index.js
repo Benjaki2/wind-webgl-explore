@@ -1,15 +1,41 @@
-
-import { vectorData, secondVectorData, secondExtent, extent } from './data';
+import { vectorData, secondVectorData } from './data';
 import WindTile from './tile';
 import * as dat from 'dat.gui';
-let i = 0;
+
 const options = {}
-const windTile = new WindTile(vectorData, extent, options);
-const secondOptions = {
-    offset: [512,0]
-};
-const secondWindTile = new WindTile(secondVectorData, secondExtent, secondOptions);
-const windTiles = [windTile, secondWindTile];
+const uids = {};
+const data = vectorData.concat(secondVectorData).reduce((acc, p) => {
+    const uid = p.properties_.UID;
+    if (uids[uid] === undefined) {
+        uids[uid] = true;
+        acc.push(p);
+    }
+    return acc;
+}, []);
+const ex = data.reduce((acc, x) => {
+    const [a, b, c, d] = x.extent_;
+    if (a < acc.a) {
+        acc.a = a;
+    }
+    if (b < acc.b) {
+        acc.b = b;
+    }
+    if (c > acc.c) {
+        acc.c = c;
+    }
+    if (d > acc.d) {
+        acc.d = d;
+    }
+    return acc;
+}, {
+    a: 0,
+    b: 0,
+    c: 0,
+    d: 0,
+})
+
+const windTile = new WindTile(data, Object.values(ex), options);
+const windTiles = [windTile];
 const gui = new dat.GUI();
 
 
