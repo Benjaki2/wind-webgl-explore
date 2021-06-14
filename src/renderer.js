@@ -45,11 +45,14 @@ export default class WindTile {
         windData.image.onload = ()  =>{
             this.wind.setWind(windData);
             this.stopped = false;
+            this.glCanvas.style = 'display:block';
+
         }
     }
     stop() {
         delete this.wind.windData;
         this.stopped = true;
+        this.glCanvas.style = 'display:none';
  
     }
     organizeData(data, extent, options) {
@@ -113,7 +116,7 @@ export default class WindTile {
     
         
         // img.src = imgData;
-        // this.parent.appendChild(_img);
+        this.parent.appendChild(_img);
 
 
         const windData = {
