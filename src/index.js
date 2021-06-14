@@ -100,8 +100,7 @@ const tileGridSizes = [
   const source = new VectorTileSource({
       visible: true,
       projection: get('EPSG:4326'),
-      url: 'https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?TIME=2020-01-01&layer=GRanD_Dams&tilematrixset=2km&Service=WMTS&Request=GetTile&Version=1.0.0&FORMAT=application%2Fvnd.mapbox-vector-tile&TileMatrix={z}&TileCol={x}&TileRow={y}',
-      format: new MVT(),
+      url: 'https://uat.gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?TIME=2020-01-01&layer=OSCAR_Sea_Surface_Currents&tilematrixset=2km&Service=WMTS&Request=GetTile&Version=1.0.0&FORMAT=application%2Fvnd.mapbox-vector-tile&TileMatrix={z}&TileCol={x}&TileRow={y}',      format: new MVT(),
       tileGrid: new WMTSTileGrid({
         extent: [-180, -90, 180, 90],
         resolutions: [0.5625, 0.28125, 0.140625, 0.0703125, 0.03515625, 0.017578125],
@@ -129,7 +128,7 @@ const tileGridSizes = [
    let arrays = [];
   source.on('tileloadstart', function(e) {  
      i++
-     arrays.push(e.tile.getFeatures);
+     
     });
     let windRender;
   source.on('tileloadend', function(e) {  
@@ -147,9 +146,12 @@ const tileGridSizes = [
           
       }
     i--
+    arrays.push(e.tile.getFeatures());
+    if(i===1 && !windRender.stopped) {
+        windRender.stop() 
+    }
     if(i=== 0){
         const extent = map.getView().calculateExtent(map.getSize());
-        console.log(map.getSize())
         var merged = [].concat.apply([], arrays);
         const mapSize = map.getSize();
         const options = {
@@ -160,16 +162,18 @@ const tileGridSizes = [
             width: mapSize[0],
             height:mapSize[1]
         }
-        windRender.updateData(data, extent, options); // Once UAT is up we will use Merged data
+        setTimeout(function(){
+            windRender.updateData(merged, extent, options);
+        }, 1000);
         arrays = [];
 
     } 
   });
-  map.getView().on('change:center', () =>{
-      windRender.stop()
-    });
-    map.getView().on('propertychange', (e) => {
-        if (e.key ==='resolution') {
-            windRender.stop()
-        }
-      });
+//   map.getView().on('change:center', () =>{
+//       windRender.stop()
+//     });
+//     map.getView().on('propertychange', (e) => {
+//         if (e.key ==='resolution') {
+//             windRender.stop()
+//         }
+//       });

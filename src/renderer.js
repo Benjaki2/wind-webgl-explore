@@ -16,6 +16,7 @@ export default class WindTile {
         this.meta = options.meta || {};
         this.parent = options.parent || document.getElementById('root');
         this.glCanvas.id = 'gl-canvas';
+        this.stopped = false;
         this.init();
         this.callback = options.callback;
         console.log(this.deltaLong, this.deltaLat)
@@ -44,12 +45,13 @@ export default class WindTile {
         const windData = this.windData= this.organizeData(data, extent,options);
         windData.image.onload = ()  =>{
             this.wind.setWind(windData);
+            this.stopped = false;
         }
     }
     stop() {
         delete this.wind.windData;
-        this.gl.clearColor(0.0, 0, 0, 0.0);
-        this.gl.clear(this.gl.COLOR_BUFFER_BIT);
+        this.stopped = true;
+ 
     }
     organizeData(data, extent, options) {
         const vectorData = data;
@@ -105,31 +107,8 @@ export default class WindTile {
             }
         };
 
-        // const vxMax = options.vxMax || Math.max(...vx);
-        // const vyMax = options.vyMax || Math.max(...vy);
-        // const vxMin = options.vxMin || Math.min(...vx);
-        // const vyMin = options.vyMin || Math.min(...vy);
-        const variogram_u = kriging.train(u, x, y, "linear", 0, 100);
-        const variogram_v = kriging.train(v, x, y, "linear", 0, 100);
 
-        // var data = new Uint8Array(180*360*4);
-        // const img = document.createElement('img');
-        // for (let y = 0; y < 180; y++) {
-        //     for (let x = 0; x < 360; x++) {
-        //         var uu = kriging.predict(x, y, variogram_u);
-        //         var vv = kriging.predict(x, y, variogram_v);
-        //         const r = Math.floor(255 * (uu - uMin) / (uMax - uMin));
-        //         const g = Math.floor(255 * (vv - vMin) / (vMax - vMin));
-        //         ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x , y);
-
-        //         data[i + 0] = r;
-        //         data[i + 1] = g;
-        //         data[i + 2] = 0;
-        //         data[i + 3] = 255;
-        //     }
-        // }
         var _img = document.createElement('img');
-        // this.parent.appendChild(_img)
         const imgData =canvas.toDataURL("image/png");
         _img.src = imgData;
     
