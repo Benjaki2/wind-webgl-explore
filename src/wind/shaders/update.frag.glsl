@@ -42,8 +42,8 @@ void main() {
     float speed_t = length(velocity) / length(u_wind_max);
 
     // take EPSG:4236 distortion into account for calculating where the particle moved
-    float distortion = cos(radians(pos.y * 180.0 - 90.0));
-    vec2 offset = vec2(velocity.x / distortion, -velocity.y) * 0.0001 * u_speed_factor;
+    // float distortion = cos(radians(pos.y * 180.0 - 90.0));
+    vec2 offset = vec2(velocity.x , -velocity.y) * 0.0001 * u_speed_factor;
 
     // update particle position, wrapping around the date line
     pos = fract(1.0 + pos + offset);

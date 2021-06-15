@@ -17,6 +17,9 @@
   top: 0;
   pointer-events: none;
 }
+body {
+  margin: 0;
+}
 html, body, .map {
   width: 1024px;
   height: 512px;

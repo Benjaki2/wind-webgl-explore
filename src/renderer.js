@@ -61,8 +61,8 @@ export default class WindTile {
         const latMin = extent[1];
         const deltaLong = extent[2]-extent[0];
         const deltaLat = extent[3]-extent[1];
-        const width = 360 ;
-        const height = 180;
+        const width = 20 ;
+        const height = 10;
         
         const NUM_POINTS = data.length;
         var canvas = document.createElement('canvas');
@@ -89,18 +89,19 @@ export default class WindTile {
             v[i] = (Math.cos(direction) / magnitude);
             const r = Math.floor(255 * (u[i] - uMin) / (uMax - uMin));
             const g = Math.floor(255 * (v[i] - vMin) / (vMax - vMin));
+
             ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]);
-            for (var j = 0; j < 10; j++) {
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]-j);
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]+j);
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]+j);
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]-j);
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]);
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]-j);
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]+j);
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]);
-                ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]);
-            }
+            // for (var j = 0; j < 10; j++) {
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]-j);
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]+j);
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]+j);
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]-j);
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]);
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]-j);
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]+j);
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]);
+            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]);
+            // }
 
             if(i<21) {
                 // console.log(flatCoordinates)
