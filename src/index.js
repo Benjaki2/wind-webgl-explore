@@ -11,6 +11,10 @@ import VectorTileSource from 'ol/source/VectorTile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import olMap from 'ol/Map';
 import olView from 'ol/View';
+import Feature from "ol/Feature";
+import { Style, Stroke, Icon } from "ol/style";
+import { containsCoordinate } from "ol/extent";
+import { LineString, Point } from "ol/geom";
 import './App.css';
 
 // const extentFull = [extent[0],extent[1],secondExtent[2],extent[3]]
@@ -79,7 +83,19 @@ const tileGridSizes = [
       "matrixHeight": 20
     }
   ]
-  
+  const  stylefunction = function (feature, resolution) {
+      console.log(feature)
+    // new Style({
+    //     geometry: new Point(point.coords),
+    //     image: new Icon({
+    //     src:
+    //         "https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color-round/3/" +
+    //         ["13", "25"][index % 2] +
+    //         "-32.png",
+    //     rotation: point.angle
+    //     })
+    // })
+    }
   var base = new olTile({
     extent: [-180, -90, 180, 90],
     crossOrigin: 'anonymous',
@@ -99,7 +115,7 @@ const tileGridSizes = [
   const source = new VectorTileSource({
       visible: true,
       projection: get('EPSG:4326'),
-      url: 'https://uat.gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?TIME=2020-01-01&layer=OSCAR_Sea_Surface_Currents&tilematrixset=2km&Service=WMTS&Request=GetTile&Version=1.0.0&FORMAT=application%2Fvnd.mapbox-vector-tile&TileMatrix={z}&TileCol={x}&TileRow={y}',      format: new MVT(),
+      url: 'https://uat.gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?TIME=2020-03-21&layer=MISR_Cloud_Motion_Vector&tilematrixset=2km&Service=WMTS&Request=GetTile&Version=1.0.0&FORMAT=application%2Fvnd.mapbox-vector-tile&TileMatrix={z}&TileCol={x}&TileRow={y}',      format: new MVT(),
       tileGrid: new WMTSTileGrid({
         extent: [-180, -90, 180, 90],
         resolutions: [0.5625, 0.28125, 0.140625, 0.0703125, 0.03515625, 0.017578125],
@@ -132,20 +148,20 @@ source.on('tileloadend', function(e) {
     if(!windRender){
         const mapSize = map.getSize();
         const options = {
-            uMin: -162,
-            uMax: 100,
-            vMin: -112,
-            vMax: 294,
+            uMin: -76.57695007324219,   
+            uMax: 44.30181884765625,
+            vMin: -76.57695007324219,
+            vMax: 44.30181884765625,
             width: mapSize[0],
             height:mapSize[1]
         }
         windRender = new WindTile(options);  
     }
     i--
-    if(i===1 && !windRender.stopped) {
+    if(i===1 && !windRender.stopped && windRender) {
         windRender.stop() 
     }
-    if(i=== 0 && !moving){
+    if(i=== 0 && !moving && windRender){
         updateRenderer();
     }
     
@@ -156,23 +172,23 @@ map.getView().on('change:center', () =>{
     moving = true;
 });
 map.getView().on('propertychange', (e) => {
-    if (e.key ==='resolution') {
+    if (e.key ==='resolution' && windRender) {
         windRender.stop()
         moving = true
     }
 });
 map.on('moveend', (e) => {
     moving = false;
-    if(i === 0 ) updateRenderer();
+    if(i === 0 && windRender ) updateRenderer();
 });
 const updateRenderer = () => {
 
     const mapSize = map.getSize();
     const options = {
-        uMin: -162,
-        uMax: 100,
-        vMin: -112,
-        vMax: 294,
+        uMin: -55.806217193603516,   
+        uMax: 45.42329406738281,
+        vMin: -5.684286117553711,
+        vMax: 44.30181884765625,
         width: mapSize[0],
         height:mapSize[1]
     }

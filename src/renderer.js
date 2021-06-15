@@ -61,8 +61,8 @@ export default class WindTile {
         const latMin = extent[1];
         const deltaLong = extent[2]-extent[0];
         const deltaLat = extent[3]-extent[1];
-        const width = 20 ;
-        const height = 10;
+        const width = 360 ;
+        const height = 180;
         
         const NUM_POINTS = data.length;
         var canvas = document.createElement('canvas');
@@ -75,22 +75,33 @@ export default class WindTile {
         ctx.fillStyle = 'rgba(' +Math.floor(255 * Math.abs(0 - uMin) / (uMax - uMin))+','+ Math.floor(255 * Math.abs(0 - vMin) / (vMax - vMin)) +',0,250';
 
         ctx.fillRect(0, 0, width, height);
+        // let uMax = 0, uMin = 0, vMin = 0, vMax = 0;
         const u = new Float32Array(NUM_POINTS),
             x = new Float32Array(NUM_POINTS),
             y = new Float32Array(NUM_POINTS),
             v = new Float32Array(NUM_POINTS);
         for (var i = 0; i < NUM_POINTS; i++) {
             const flatCoordinates = vectorData[i].flatCoordinates_;
-            const magnitude = vectorData[i].properties_.Magnitude;
-            const direction = vectorData[i].properties_.Direction;
             x[i] = Math.floor((Math.abs(flatCoordinates[0] - longMin) / deltaLong ) * width);
             y[i] = Math.floor(height - ((Math.abs(flatCoordinates[1] - latMin) / deltaLat ) * height));
-            u[i] =(Math.sin(direction) / magnitude);
-            v[i] = (Math.cos(direction) / magnitude);
+            u[i] = vectorData[i].properties_.U;
+            v[i] = vectorData[i].properties_.V;
             const r = Math.floor(255 * (u[i] - uMin) / (uMax - uMin));
             const g = Math.floor(255 * (v[i] - vMin) / (vMax - vMin));
 
             ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]);
+            // if (u[i] > uMax) { 
+            //     uMax = u[i]
+            // }
+            // if (u[i] < uMin) { 
+            //     uMin = u[i]
+            // }
+            // if (v[i] < vMin) { 
+            //     vMin = u[i]
+            // }
+            // if (v[i] > vMax) { 
+            //     vMax = v[i]
+            // }
             // for (var j = 0; j < 10; j++) {
             //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]-j);
             //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]+j);
@@ -109,7 +120,7 @@ export default class WindTile {
                 // console.log(u[i],v[i])
             }
         };
-
+        // console.log(uMin, vMin, uMax, vMax)
 
         var _img = document.createElement('img');
         const imgData =canvas.toDataURL("image/png");
