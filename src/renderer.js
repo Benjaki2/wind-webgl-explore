@@ -1,6 +1,4 @@
-import kriging from "@sakitam-gis/kriging";
 import WindGL from './wind/index';
-import Image from './wind/img.png';
 
 
 export default class WindTile {
@@ -40,13 +38,13 @@ export default class WindTile {
         
         
     }
-    updateData(data, extent, options) {
-        const windData = this.windData= this.organizeData(data, extent,options);
+    updateData(data, extent, zoom, options) {
+        const windData = this.windData= this.organizeData(data, extent,zoom, options);
         windData.image.onload = ()  =>{
             this.wind.setWind(windData);
             this.stopped = false;
             this.glCanvas.style = 'display:block';
-
+            windData.image = null;
         }
     }
     stop() {
@@ -55,27 +53,26 @@ export default class WindTile {
         this.glCanvas.style = 'display:none';
  
     }
-    organizeData(data, extent, options) {
+    organizeData(data, extent, zoom, options) {
         const vectorData = data;
         const longMin = extent[0];
         const latMin = extent[1];
         const deltaLong = extent[2]-extent[0];
         const deltaLat = extent[3]-extent[1];
-        const width = 360 ;
-        const height = 180;
-        
+        const isZoomedIn = zoom > 6;
+        const isLowZoom = zoom < 3;
+        const width = isLowZoom ? 360 : isZoomedIn ? 90 : 180 ;
+        const height = isLowZoom ? 180 :isZoomedIn ? 45 : 90;
         const NUM_POINTS = data.length;
         var canvas = document.createElement('canvas');
         canvas.width = width;
         canvas.height = height;
-        this.parent.appendChild(canvas);
 
         var ctx = canvas.getContext('2d');
         const { uMin, vMin, uMax, vMax } = options;
         ctx.fillStyle = 'rgba(' +Math.floor(255 * Math.abs(0 - uMin) / (uMax - uMin))+','+ Math.floor(255 * Math.abs(0 - vMin) / (vMax - vMin)) +',0,250';
 
         ctx.fillRect(0, 0, width, height);
-        // let uMax = 0, uMin = 0, vMin = 0, vMax = 0;
         const u = new Float32Array(NUM_POINTS),
             x = new Float32Array(NUM_POINTS),
             y = new Float32Array(NUM_POINTS),
@@ -90,47 +87,11 @@ export default class WindTile {
             const g = Math.floor(255 * (v[i] - vMin) / (vMax - vMin));
 
             ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]);
-            // if (u[i] > uMax) { 
-            //     uMax = u[i]
-            // }
-            // if (u[i] < uMin) { 
-            //     uMin = u[i]
-            // }
-            // if (v[i] < vMin) { 
-            //     vMin = u[i]
-            // }
-            // if (v[i] > vMax) { 
-            //     vMax = v[i]
-            // }
-            // for (var j = 0; j < 10; j++) {
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]-j);
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]+j);
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]+j);
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]-j);
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]);
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]-j);
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]+j);
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]-j , y[i]);
-            //     ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i]+j , y[i]);
-            // }
-
-            if(i<21) {
-                // console.log(flatCoordinates)
-                // console.log(x[i],y[i])
-                // console.log(u[i],v[i])
-            }
         };
-        // console.log(uMin, vMin, uMax, vMax)
 
         var _img = document.createElement('img');
-        const imgData =canvas.toDataURL("image/png");
+        const imgData = canvas.toDataURL("image/png");
         _img.src = imgData;
-    
-        
-        // img.src = imgData;
-        this.parent.appendChild(_img);
-
-
         const windData = {
             image: _img,
             uMin,

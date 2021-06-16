@@ -1,5 +1,4 @@
 
-import { vectorData, secondVectorData, secondExtent, extent } from './data';
 import WindTile from './renderer';
 import * as dat from 'dat.gui';
 import olTile from 'ol/layer/Tile';
@@ -11,52 +10,10 @@ import VectorTileSource from 'ol/source/VectorTile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import olMap from 'ol/Map';
 import olView from 'ol/View';
-import Feature from "ol/Feature";
-import { Style, Stroke, Icon } from "ol/style";
-import { containsCoordinate } from "ol/extent";
-import { LineString, Point } from "ol/geom";
 import './App.css';
 
-// const extentFull = [extent[0],extent[1],secondExtent[2],extent[3]]
-const data = secondVectorData.concat(vectorData);
-// const secondOptions = {
-//     offset: [512,0],
-//     uMin: -162,
-//     uMax: 100,
-//     vMin: -112,
-//     vMax: 294
-// };
-// const secondWindTile = new WindTile(secondVectorData, secondExtent, secondOptions);
-// const windTiles = [windTile, secondWindTile];
-// const gui = new dat.GUI();
+const gui = new dat.GUI();
 
-
-// function getMin(data,key) {
-//     return data.reduce((min, p) => p.windData[key] < min ? p.windData[key] : min, data[0].windData[key]);
-// }
-// function getMax(data,key) {
-//     return data.reduce((max, p) => p.windData[key] > max ? p.windData[key] : max, data[0].windData[key]);
-// }
-
-// const uMin = getMin(windTiles,'uMin');
-// const uMax = getMax(windTiles,'uMax');
-// const vMin = getMin(windTiles,'vMin');
-// const vMax = getMax(windTiles,'vMax');
-
-// windTiles.forEach(tile => {
-    // const wind = windTile.wind;
-    // gui.add(wind, 'numParticles', 144, 248832);
-    // gui.add(wind, 'fadeOpacity', 0.96, 0.999).step(0.001).updateDisplay();
-    // gui.add(wind, 'speedFactor', 0.05, 1.0);
-    // gui.add(wind, 'dropRate', 0, 0.1);
-    // gui.add(wind, 'dropRateBump', 0, 0.2);
-    // gui.add(wind.windData, 'uMin', -360, 0)
-    // gui.add(wind.windData, 'uMax', 0, 360)
-    // gui.add(wind.windData, 'vMin', -360, 0)
-    // gui.add(wind.windData, 'vMax', 0, 360)
-// })
-
-// 
 const tileGridSizes = [
     {
       "matrixWidth": 2,
@@ -82,20 +39,7 @@ const tileGridSizes = [
       "matrixWidth": 40,
       "matrixHeight": 20
     }
-  ]
-  const  stylefunction = function (feature, resolution) {
-      console.log(feature)
-    // new Style({
-    //     geometry: new Point(point.coords),
-    //     image: new Icon({
-    //     src:
-    //         "https://cdn1.iconfinder.com/data/icons/basic-ui-elements-color-round/3/" +
-    //         ["13", "25"][index % 2] +
-    //         "-32.png",
-    //     rotation: point.angle
-    //     })
-    // })
-    }
+  ];
   var base = new olTile({
     extent: [-180, -90, 180, 90],
     crossOrigin: 'anonymous',
@@ -181,21 +125,34 @@ map.on('moveend', (e) => {
     moving = false;
     if(i === 0 && windRender ) updateRenderer();
 });
+let initiatedGUI = false;
 const updateRenderer = () => {
-
-    const mapSize = map.getSize();
-    const options = {
-        uMin: -55.806217193603516,   
-        uMax: 45.42329406738281,
-        vMin: -5.684286117553711,
-        vMax: 44.30181884765625,
-        width: mapSize[0],
-        height:mapSize[1]
-    }
     setTimeout(function(){
-        const extent = map.getView().calculateExtent(map.getSize());
+        const view = map.getView();
+        const mapSize = map.getSize();
+        const extent = view.calculateExtent(mapSize);
         const currentFeatures = vectorLayer.getSource().getFeaturesInExtent(extent);
-        windRender.updateData(currentFeatures, extent, options);
+        const zoom = view.getZoom();
+        const options = {
+            uMin: -55.806217193603516,   
+            uMax: 45.42329406738281,
+            vMin: -5.684286117553711,
+            vMax: 44.30181884765625,
+            width: mapSize[0],
+            height:mapSize[1]
+        }
+        windRender.updateData(currentFeatures, extent, zoom, options);
+        if(!initiatedGUI) initGUI()
+        
     }, 1000);
     
+}
+const initGUI = function() {
+    const wind = windRender.wind;
+    gui.add(wind, 'numParticles', 144, 248832);
+    gui.add(wind, 'fadeOpacity', 0.96, 0.999).step(0.001).updateDisplay();
+    gui.add(wind, 'speedFactor', 0.05, 1.0);
+    gui.add(wind, 'dropRate', 0, 0.1);
+    gui.add(wind, 'dropRateBump', 0, 0.2);
+    initiatedGUI = true;
 }
