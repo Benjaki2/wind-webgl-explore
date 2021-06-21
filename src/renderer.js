@@ -40,12 +40,12 @@ export default class WindTile {
     }
     updateData(data, extent, zoom, options) {
         const windData = this.windData= this.organizeData(data, extent,zoom, options);
-        windData.image.onload = ()  =>{
+        // windData.image.onload = ()  =>{
             this.wind.setWind(windData);
             this.stopped = false;
             this.glCanvas.style = 'display:block';
             windData.image = null;
-        }
+        // }
     }
     stop() {
         delete this.wind.windData;
@@ -70,36 +70,61 @@ export default class WindTile {
 
         var ctx = canvas.getContext('2d');
         const { uMin, vMin, uMax, vMax } = options;
-        ctx.fillStyle = 'rgba(' +Math.floor(255 * Math.abs(0 - uMin) / (uMax - uMin))+','+ Math.floor(255 * Math.abs(0 - vMin) / (vMax - vMin)) +',0,250';
+        // ctx.fillStyle = 'rgba(' +Math.floor(255 * Math.abs(0 - uMin) / (uMax - uMin))+','+ Math.floor(255 * Math.abs(0 - vMin) / (vMax - vMin)) +',0,250';
 
-        ctx.fillRect(0, 0, width, height);
-        const u = new Float32Array(NUM_POINTS),
-            x = new Float32Array(NUM_POINTS),
-            y = new Float32Array(NUM_POINTS),
-            v = new Float32Array(NUM_POINTS);
+        // ctx.fillRect(0, 0, width, height);
+        
+        const uZero = Math.floor(255 * Math.abs(0 - uMin) / (uMax - uMin));
+        const vZero =  Math.floor(255 * Math.abs(0 - vMin) / (vMax - vMin));
+        const imageArray = new Uint8Array(width*height*4);
+
+        
+        
+        const r = new Float32Array(NUM_POINTS),
+            j = new Uint8Array(width*height*4),
+            g = new Float32Array(NUM_POINTS);
         for (var i = 0; i < NUM_POINTS; i++) {
             const flatCoordinates = vectorData[i].flatCoordinates_;
-            x[i] = Math.floor((Math.abs(flatCoordinates[0] - longMin) / deltaLong ) * width);
-            y[i] = Math.floor(height - ((Math.abs(flatCoordinates[1] - latMin) / deltaLat ) * height));
-            u[i] = vectorData[i].properties_.U;
-            v[i] = vectorData[i].properties_.V;
-            const r = Math.floor(255 * (u[i] - uMin) / (uMax - uMin));
-            const g = Math.floor(255 * (v[i] - vMin) / (vMax - vMin));
-
-            ctx.putImageData(new ImageData(new Uint8ClampedArray([r, g, 0, 255]), 1 ,1), x[i] , y[i]);
+            const x = Math.floor((Math.abs(flatCoordinates[0] - longMin) / deltaLong ) * width);
+            const y = Math.floor(height - ((Math.abs(flatCoordinates[1] - latMin) / deltaLat ) * height));
+            const u = vectorData[i].properties_.U;
+            const v = vectorData[i].properties_.V;
+            const ii = (y * width + x) * 4;
+            j[ii] = i;
+            r[i] = Math.floor(255 * (u - uMin) / (uMax - uMin));
+            g[i] = Math.floor(255 * (v - vMin) / (vMax - vMin));
+            // imageArray[j + 0] = r;
+            // imageArray[j + 1] = g;
+            // imageArray[j + 2] = 0;
+            // imageArray[j + 3] = 255;
         };
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const i = (y * width + x) * 4;
+                const index = j[i];
+                const rValue = index !==0  ? r[index] : uZero;
+                const gValue = index !==0 ? g[index] : vZero;
+                imageArray[i + 0] = 
+                imageArray[i + 1] = 
+                imageArray[i + 2] = 0;
+                imageArray[i + 3] = 255;
+            }
+        }
+        
 
-        var _img = document.createElement('img');
-        const imgData = canvas.toDataURL("image/png");
-        _img.src = imgData;
+        // var _img = document.createElement('img');
+        // const imgData = canvas.toDataURL("image/png");
+        // _img.src = imgData;
         const windData = {
-            image: _img,
+            image: imageArray,
             uMin,
             vMin,
             uMax,
             vMax,
             width: deltaLong,
-            height: deltaLat
+            height: deltaLat,
+            textureHeight: height,
+            textureWidth: width
           }
         return windData;
     }
