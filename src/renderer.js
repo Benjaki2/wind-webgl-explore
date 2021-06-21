@@ -30,22 +30,14 @@ export default class WindTile {
         this.frame();
         if (this.pxRatio !== 1) {
             this.meta['retina resolution'] = true;
-        }
-        
-
-        
-        
-        
-        
+        } 
     }
     updateData(data, extent, zoom, options) {
         const windData = this.windData= this.organizeData(data, extent,zoom, options);
-        // windData.image.onload = ()  =>{
-            this.wind.setWind(windData);
-            this.stopped = false;
-            this.glCanvas.style = 'display:block';
-            windData.image = null;
-        // }
+        this.wind.setWind(windData);
+        this.stopped = false;
+        this.glCanvas.style = 'display:block';
+        windData.image = null;
     }
     stop() {
         delete this.wind.windData;
@@ -64,25 +56,13 @@ export default class WindTile {
         const width = isLowZoom ? 360 : isZoomedIn ? 90 : 180 ;
         const height = isLowZoom ? 180 :isZoomedIn ? 45 : 90;
         const NUM_POINTS = data.length;
-        var canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
 
-        var ctx = canvas.getContext('2d');
         const { uMin, vMin, uMax, vMax } = options;
-        // ctx.fillStyle = 'rgba(' +Math.floor(255 * Math.abs(0 - uMin) / (uMax - uMin))+','+ Math.floor(255 * Math.abs(0 - vMin) / (vMax - vMin)) +',0,250';
-
-        // ctx.fillRect(0, 0, width, height);
-        
         const uZero = Math.floor(255 * Math.abs(0 - uMin) / (uMax - uMin));
         const vZero =  Math.floor(255 * Math.abs(0 - vMin) / (vMax - vMin));
-        const imageArray = new Uint8Array(width*height*4);
+        const imageArray = new Uint8Array(width * height * 4);
+        const j = new Uint8Array(width * height * 4);
 
-        
-        
-        const r = new Float32Array(NUM_POINTS),
-            j = new Uint8Array(width*height*4),
-            g = new Float32Array(NUM_POINTS);
         for (var i = 0; i < NUM_POINTS; i++) {
             const flatCoordinates = vectorData[i].flatCoordinates_;
             const x = Math.floor((Math.abs(flatCoordinates[0] - longMin) / deltaLong ) * width);
@@ -91,30 +71,28 @@ export default class WindTile {
             const v = vectorData[i].properties_.V;
             const ii = (y * width + x) * 4;
             j[ii] = i;
-            r[i] = Math.floor(255 * (u - uMin) / (uMax - uMin));
-            g[i] = Math.floor(255 * (v - vMin) / (vMax - vMin));
-            // imageArray[j + 0] = r;
-            // imageArray[j + 1] = g;
-            // imageArray[j + 2] = 0;
-            // imageArray[j + 3] = 255;
+            const r = Math.floor(255 * (u - uMin) / (uMax - uMin));
+            const g = Math.floor(255 * (v - vMin) / (vMax - vMin));
+            imageArray[ii + 0] = r;
+            imageArray[ii + 1] = g;
+            imageArray[ii + 2] = 0;
+            imageArray[ii + 3] = 255;
+
         };
+
+        // Fill in empty pixels with zero wind color
         for (let y = 0; y < height; y++) {
             for (let x = 0; x < width; x++) {
                 const i = (y * width + x) * 4;
                 const index = j[i];
-                const rValue = index !==0  ? r[index] : uZero;
-                const gValue = index !==0 ? g[index] : vZero;
-                imageArray[i + 0] = 
-                imageArray[i + 1] = 
-                imageArray[i + 2] = 0;
-                imageArray[i + 3] = 255;
+                if(!index) {
+                    imageArray[i + 0] = uZero
+                    imageArray[i + 1] = vZero
+                    imageArray[i + 2] = 0;
+                    imageArray[i + 3] = 255;
+                }
             }
         }
-        
-
-        // var _img = document.createElement('img');
-        // const imgData = canvas.toDataURL("image/png");
-        // _img.src = imgData;
         const windData = {
             image: imageArray,
             uMin,
