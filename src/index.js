@@ -10,6 +10,7 @@ import VectorTileSource from 'ol/source/VectorTile';
 import VectorTileLayer from 'ol/layer/VectorTile';
 import olMap from 'ol/Map';
 import olView from 'ol/View';
+import { throttle } from './util';
 import './App.css';
 
 const gui = new dat.GUI();
@@ -106,9 +107,14 @@ source.on('tileloadend', function(e) {
         windRender.stop() 
     }
     if(i=== 0 && !moving && windRender){
-        updateRenderer();
+      if(!initiatedGUI) {
+        setTimeout(function() { updateRenderer(); }, 1);
+      } else {
+        updateRendererThrottled();
+      }      
     }
-    
+      }      
+    }
 });
 let moving = false;
 map.getView().on('change:center', () =>{
@@ -123,30 +129,30 @@ map.getView().on('propertychange', (e) => {
 });
 map.on('moveend', (e) => {
     moving = false;
-    if(i === 0 && windRender ) updateRenderer();
+    if(i === 0 && windRender ) updateRendererThrottled();
 });
 let initiatedGUI = false;
 const updateRenderer = () => {
-    setTimeout(function(){
-        const view = map.getView();
-        const mapSize = map.getSize();
-        const extent = view.calculateExtent(mapSize);
-        const currentFeatures = vectorLayer.getSource().getFeaturesInExtent(extent);
-        const zoom = view.getZoom();
-        const options = {
+    const view = map.getView();
+    const mapSize = map.getSize();
+    const extent = view.calculateExtent(mapSize);
+    const currentFeatures = vectorLayer.getSource().getFeaturesInExtent(extent);
+    const zoom = view.getZoom();
+    const options = {
+        uMin: -55.806217193603516,   
             uMin: -55.806217193603516,   
-            uMax: 45.42329406738281,
-            vMin: -5.684286117553711,
-            vMax: 44.30181884765625,
-            width: mapSize[0],
-            height:mapSize[1]
-        }
-        windRender.updateData(currentFeatures, extent, zoom, options);
-        if(!initiatedGUI) initGUI()
-        
-    }, 1000);
-    
+        uMin: -55.806217193603516,   
+        uMax: 45.42329406738281,
+        vMin: -5.684286117553711,
+        vMax: 44.30181884765625,
+        width: mapSize[0],
+        height:mapSize[1],
+        ts: Date.now(),
+    }
+    windRender.updateData(currentFeatures, extent, zoom, options);
+    if(!initiatedGUI) initGUI()
 }
+const updateRendererThrottled = throttle(updateRenderer, 150);
 const initGUI = function() {
     const wind = windRender.wind;
     gui.add(wind, 'numParticles', 144, 248832);

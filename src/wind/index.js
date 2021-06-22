@@ -77,7 +77,6 @@ export default class WindGL {
     }
 
     setWind(windData) {
-        const gl = this.gl;
         this.windData = windData;
         const height= windData.textureHeight;
         const width= windData.textureWidth;
