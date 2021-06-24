@@ -113,8 +113,6 @@ source.on('tileloadend', function(e) {
         updateRendererThrottled();
       }      
     }
-      }      
-    }
 });
 let moving = false;
 map.getView().on('change:center', () =>{
@@ -132,15 +130,16 @@ map.on('moveend', (e) => {
     if(i === 0 && windRender ) updateRendererThrottled();
 });
 let initiatedGUI = false;
+let currentFeatures, zoom, extent, options;
 const updateRenderer = () => {
     const view = map.getView();
     const mapSize = map.getSize();
-    const extent = view.calculateExtent(mapSize);
-    const currentFeatures = vectorLayer.getSource().getFeaturesInExtent(extent);
-    const zoom = view.getZoom();
-    const options = {
+    extent = view.calculateExtent(mapSize);
+    currentFeatures = vectorLayer.getSource().getFeaturesInExtent(extent);
+    zoom = view.getZoom();
+    options = {
         uMin: -55.806217193603516,   
-            uMin: -55.806217193603516,   
+        uMin: -55.806217193603516,   
         uMin: -55.806217193603516,   
         uMax: 45.42329406738281,
         vMin: -5.684286117553711,
@@ -160,5 +159,9 @@ const initGUI = function() {
     gui.add(wind, 'speedFactor', 0.05, 1.0);
     gui.add(wind, 'dropRate', 0, 0.1);
     gui.add(wind, 'dropRateBump', 0, 0.2);
+    gui.add(windRender, 'textureWidth', 18, 360).step(2).onChange(updateTexture);
     initiatedGUI = true;
+}
+const updateTexture = function() {
+  windRender.updateData(currentFeatures, extent, zoom, options);
 }
