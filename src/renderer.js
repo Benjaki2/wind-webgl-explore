@@ -7,7 +7,7 @@ export default class WindTile {
         this.visibleExtent = [-180, -90, 180, 90];
         this.width = options.width || 512;
         this.height = options.height || 512;
-        this.textureWidth = 360;
+        this.dataGridWidth = 360;
         this.glCanvas = options.canvas ||  document.createElement('canvas');
         this.gl = options.gl || this.glCanvas.getContext('webgl', {antialiasing: false});
         this.offset = options.offset || [0,0];
@@ -56,8 +56,8 @@ export default class WindTile {
         // const isLowZoom = zoom < 3;
         // const width = isLowZoom ? 360 : isZoomedIn ? 90 : 180 ;
         // const height = isLowZoom ? 180 :isZoomedIn ? 45 : 90;
-        const width = this.textureWidth;
-        const height = this.textureWidth /2;
+        const width = this.dataGridWidth;
+        const height = this.dataGridWidth /2;
         const NUM_POINTS = data.length;
 
         const { uMin, vMin, uMax, vMax } = options;

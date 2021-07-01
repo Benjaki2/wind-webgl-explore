@@ -159,7 +159,7 @@ const initGUI = function() {
     gui.add(wind, 'speedFactor', 0.05, 1.0);
     gui.add(wind, 'dropRate', 0, 0.1);
     gui.add(wind, 'dropRateBump', 0, 0.2);
-    gui.add(windRender, 'textureWidth', 18, 360).step(2).onChange(updateTexture);
+    gui.add(windRender, 'dataGridWidth', 18, 360).step(2).onChange(updateTexture);
     initiatedGUI = true;
 }
 const updateTexture = function() {
