@@ -32,3 +32,14 @@ export function decode(pair, scale) {
     return (((pair[0] / 255) * b +
         (pair[1] / 255) * b * b) - b * b / 2) / scale;
 }
+
+// https://codepen.io/SitePoint/pen/RRLVAL?editors=1010
+export function throttle(fn, wait) {
+    var time = Date.now();
+    return function() {
+      if ((time + wait - Date.now()) < 0) {
+        fn();
+        time = Date.now();
+      }
+    }
+}

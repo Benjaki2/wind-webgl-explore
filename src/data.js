@@ -1,6 +1,1207 @@
 
-export const extent = [-180, -198, 108, 90];
-
+export const extent = [
+    -180,
+    -198,
+    108,
+    90
+];
+export const secondExtent = [
+    108,
+    -198,
+    396,
+    90
+];
+export const resolution = 0.5625;
+export const secondVectorData = [
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            54.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 243.91461,
+            "UID": "216",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.038397,
+            "Latitude": 54.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            54.2109375,
+            161.7890625,
+            54.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            54.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 154.42947,
+            "UID": "215",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.0541239,
+            "Latitude": 54.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            54.2109375,
+            143.7890625,
+            54.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            36.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 50.640869,
+            "UID": "197",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.00889261,
+            "Latitude": 36.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            36.2109375,
+            125.7890625,
+            36.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            27.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 47.048058,
+            "UID": "185",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.539043,
+            "Latitude": 27.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            27.2109375,
+            125.7890625,
+            27.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            45.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 33.330501,
+            "UID": "208",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.061605,
+            "Latitude": 45.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            45.2109375,
+            161.7890625,
+            45.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            45.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 280.5306,
+            "UID": "207",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.0404939,
+            "Latitude": 45.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            45.2109375,
+            143.7890625,
+            45.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            36.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 331.44404,
+            "UID": "199",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.221093,
+            "Latitude": 36.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            36.2109375,
+            161.7890625,
+            36.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            36.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 69.042219,
+            "UID": "198",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.166678,
+            "Latitude": 36.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            36.2109375,
+            143.7890625,
+            36.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            27.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 186.15511,
+            "UID": "187",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.0749566,
+            "Latitude": 27.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            27.2109375,
+            161.7890625,
+            27.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            27.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 351.23816,
+            "UID": "186",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.0725344,
+            "Latitude": 27.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            27.2109375,
+            143.7890625,
+            27.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            18.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 200.30865,
+            "UID": "172",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.134847,
+            "Latitude": 18.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            18.2109375,
+            107.7890625,
+            18.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            18.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 118.81942,
+            "UID": "173",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.175707,
+            "Latitude": 18.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            18.2109375,
+            125.7890625,
+            18.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            18.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 53.410788,
+            "UID": "175",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.121068,
+            "Latitude": 18.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            18.2109375,
+            161.7890625,
+            18.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            18.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 290.46467,
+            "UID": "174",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.119023,
+            "Latitude": 18.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            18.2109375,
+            143.7890625,
+            18.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            9.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 9.9235976,
+            "UID": "159",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.187307,
+            "Latitude": 9.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            9.2109375,
+            143.7890625,
+            9.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            9.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 310.03973,
+            "UID": "160",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.274317,
+            "Latitude": 9.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            9.2109375,
+            161.7890625,
+            9.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            9.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 213.53173,
+            "UID": "158",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.298731,
+            "Latitude": 9.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            9.2109375,
+            107.7890625,
+            9.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            0.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 244.51385,
+            "UID": "145",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.175044,
+            "Latitude": 0.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            0.2109375,
+            161.7890625,
+            0.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            0.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 324.80679,
+            "UID": "144",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.106762,
+            "Latitude": 0.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            0.2109375,
+            143.7890625,
+            0.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            0.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 95.6808,
+            "UID": "142",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.742678,
+            "Latitude": 0.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            0.2109375,
+            107.7890625,
+            0.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            0.2109375
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 24.554415,
+            "UID": "143",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.6164,
+            "Latitude": 0.140625,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            0.2109375,
+            125.7890625,
+            0.2109375
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            -8.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 164.23656,
+            "UID": "127",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.034352,
+            "Latitude": -8.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            -8.71875,
+            125.7890625,
+            -8.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            -8.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 58.551572,
+            "UID": "126",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.185461,
+            "Latitude": -8.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            -8.71875,
+            107.7890625,
+            -8.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            -8.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 352.92323,
+            "UID": "129",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.138922,
+            "Latitude": -8.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            -8.71875,
+            161.7890625,
+            -8.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            -8.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 214.74775,
+            "UID": "128",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.147795,
+            "Latitude": -8.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            -8.71875,
+            143.7890625,
+            -8.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            -17.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 207.5235,
+            "UID": "113",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.164287,
+            "Latitude": -17.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            -17.71875,
+            107.7890625,
+            -17.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            -17.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 44.102626,
+            "UID": "114",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.179833,
+            "Latitude": -17.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            -17.71875,
+            161.7890625,
+            -17.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            -26.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 347.72971,
+            "UID": "98",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.0548669,
+            "Latitude": -26.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            -26.71875,
+            107.7890625,
+            -26.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            -26.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 162.29867,
+            "UID": "99",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.26285,
+            "Latitude": -26.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            -26.71875,
+            161.7890625,
+            -26.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            -35.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 91.712526,
+            "UID": "83",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.052389,
+            "Latitude": -35.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            -35.71875,
+            161.7890625,
+            -35.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            -35.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 133.27327,
+            "UID": "82",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.033075,
+            "Latitude": -35.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            -35.71875,
+            125.7890625,
+            -35.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            -35.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 270.89873,
+            "UID": "81",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.0431935,
+            "Latitude": -35.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            -35.71875,
+            107.7890625,
+            -35.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            -44.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 279.84687,
+            "UID": "62",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.0578273,
+            "Latitude": -44.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            -44.71875,
+            107.7890625,
+            -44.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            -44.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 337.11904,
+            "UID": "63",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.0544808,
+            "Latitude": -44.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            -44.71875,
+            125.7890625,
+            -44.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            -44.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 27.392899,
+            "UID": "64",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.0775908,
+            "Latitude": -44.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            -44.71875,
+            143.7890625,
+            -44.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            -44.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 77.154904,
+            "UID": "65",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.0308688,
+            "Latitude": -44.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            -44.71875,
+            161.7890625,
+            -44.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            -53.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 348.00574,
+            "UID": "45",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.172052,
+            "Latitude": -53.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            -53.71875,
+            143.7890625,
+            -53.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            -53.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 109.15174,
+            "UID": "46",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.493316,
+            "Latitude": -53.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            -53.71875,
+            161.7890625,
+            -53.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            -53.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 12.526026,
+            "UID": "43",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.219231,
+            "Latitude": -53.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            -53.71875,
+            107.7890625,
+            -53.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            -53.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 68.60983,
+            "UID": "44",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.235875,
+            "Latitude": -53.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            -53.71875,
+            125.7890625,
+            -53.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            125.7890625,
+            -62.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 258.5023,
+            "UID": "25",
+            "Zoom": 0,
+            "Longitude": 126.14062,
+            "Magnitude": 0.104719,
+            "Latitude": -62.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            125.7890625,
+            -62.71875,
+            125.7890625,
+            -62.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            107.7890625,
+            -62.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 120.49045,
+            "UID": "24",
+            "Zoom": 0,
+            "Longitude": 108.14062,
+            "Magnitude": 0.0392168,
+            "Latitude": -62.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            107.7890625,
+            -62.71875,
+            107.7890625,
+            -62.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            161.7890625,
+            -62.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 95.00816,
+            "UID": "27",
+            "Zoom": 0,
+            "Longitude": 162.14062,
+            "Magnitude": 0.0568039,
+            "Latitude": -62.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            161.7890625,
+            -62.71875,
+            161.7890625,
+            -62.71875
+        ]
+    },
+    {
+        "type_": "Point",
+        "flatCoordinates_": [
+            143.7890625,
+            -62.71875
+        ],
+        "flatInteriorPoints_": null,
+        "flatMidpoints_": null,
+        "ends_": [
+            2
+        ],
+        "properties_": {
+            "Direction": 71.637334,
+            "UID": "26",
+            "Zoom": 0,
+            "Longitude": 144.14062,
+            "Magnitude": 0.0500564,
+            "Latitude": -62.859375,
+            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
+        },
+        "extent_": [
+            143.7890625,
+            -62.71875,
+            143.7890625,
+            -62.71875
+        ]
+    }
+];
 export const vectorData = [
     {
         "type_": "Point",
@@ -5184,1196 +6385,6 @@ export const vectorData = [
             -71.6484375,
             -161.859375,
             -71.6484375
-        ]
-    }
-]
-export const data = [
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            54.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 243.91461,
-            "UID": "216",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.038397,
-            "Latitude": 54.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            54.2109375,
-            161.7890625,
-            54.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            54.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 154.42947,
-            "UID": "215",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.0541239,
-            "Latitude": 54.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            54.2109375,
-            143.7890625,
-            54.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            36.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 50.640869,
-            "UID": "197",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.00889261,
-            "Latitude": 36.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            36.2109375,
-            125.7890625,
-            36.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            27.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 47.048058,
-            "UID": "185",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.539043,
-            "Latitude": 27.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            27.2109375,
-            125.7890625,
-            27.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            45.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 33.330501,
-            "UID": "208",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.061605,
-            "Latitude": 45.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            45.2109375,
-            161.7890625,
-            45.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            45.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 280.5306,
-            "UID": "207",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.0404939,
-            "Latitude": 45.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            45.2109375,
-            143.7890625,
-            45.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            36.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 331.44404,
-            "UID": "199",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.221093,
-            "Latitude": 36.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            36.2109375,
-            161.7890625,
-            36.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            36.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 69.042219,
-            "UID": "198",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.166678,
-            "Latitude": 36.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            36.2109375,
-            143.7890625,
-            36.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            27.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 186.15511,
-            "UID": "187",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.0749566,
-            "Latitude": 27.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            27.2109375,
-            161.7890625,
-            27.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            27.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 351.23816,
-            "UID": "186",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.0725344,
-            "Latitude": 27.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            27.2109375,
-            143.7890625,
-            27.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            18.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 200.30865,
-            "UID": "172",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.134847,
-            "Latitude": 18.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            18.2109375,
-            107.7890625,
-            18.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            18.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 118.81942,
-            "UID": "173",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.175707,
-            "Latitude": 18.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            18.2109375,
-            125.7890625,
-            18.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            18.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 53.410788,
-            "UID": "175",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.121068,
-            "Latitude": 18.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            18.2109375,
-            161.7890625,
-            18.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            18.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 290.46467,
-            "UID": "174",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.119023,
-            "Latitude": 18.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            18.2109375,
-            143.7890625,
-            18.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            9.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 9.9235976,
-            "UID": "159",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.187307,
-            "Latitude": 9.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            9.2109375,
-            143.7890625,
-            9.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            9.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 310.03973,
-            "UID": "160",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.274317,
-            "Latitude": 9.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            9.2109375,
-            161.7890625,
-            9.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            9.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 213.53173,
-            "UID": "158",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.298731,
-            "Latitude": 9.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            9.2109375,
-            107.7890625,
-            9.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            0.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 244.51385,
-            "UID": "145",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.175044,
-            "Latitude": 0.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            0.2109375,
-            161.7890625,
-            0.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            0.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 324.80679,
-            "UID": "144",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.106762,
-            "Latitude": 0.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            0.2109375,
-            143.7890625,
-            0.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            0.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 95.6808,
-            "UID": "142",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.742678,
-            "Latitude": 0.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            0.2109375,
-            107.7890625,
-            0.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            0.2109375
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 24.554415,
-            "UID": "143",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.6164,
-            "Latitude": 0.140625,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            0.2109375,
-            125.7890625,
-            0.2109375
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            -8.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 164.23656,
-            "UID": "127",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.034352,
-            "Latitude": -8.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            -8.71875,
-            125.7890625,
-            -8.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            -8.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 58.551572,
-            "UID": "126",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.185461,
-            "Latitude": -8.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            -8.71875,
-            107.7890625,
-            -8.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            -8.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 352.92323,
-            "UID": "129",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.138922,
-            "Latitude": -8.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            -8.71875,
-            161.7890625,
-            -8.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            -8.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 214.74775,
-            "UID": "128",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.147795,
-            "Latitude": -8.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            -8.71875,
-            143.7890625,
-            -8.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            -17.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 207.5235,
-            "UID": "113",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.164287,
-            "Latitude": -17.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            -17.71875,
-            107.7890625,
-            -17.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            -17.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 44.102626,
-            "UID": "114",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.179833,
-            "Latitude": -17.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            -17.71875,
-            161.7890625,
-            -17.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            -26.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 347.72971,
-            "UID": "98",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.0548669,
-            "Latitude": -26.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            -26.71875,
-            107.7890625,
-            -26.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            -26.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 162.29867,
-            "UID": "99",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.26285,
-            "Latitude": -26.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            -26.71875,
-            161.7890625,
-            -26.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            -35.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 91.712526,
-            "UID": "83",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.052389,
-            "Latitude": -35.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            -35.71875,
-            161.7890625,
-            -35.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            -35.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 133.27327,
-            "UID": "82",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.033075,
-            "Latitude": -35.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            -35.71875,
-            125.7890625,
-            -35.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            -35.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 270.89873,
-            "UID": "81",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.0431935,
-            "Latitude": -35.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            -35.71875,
-            107.7890625,
-            -35.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            -44.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 279.84687,
-            "UID": "62",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.0578273,
-            "Latitude": -44.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            -44.71875,
-            107.7890625,
-            -44.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            -44.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 337.11904,
-            "UID": "63",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.0544808,
-            "Latitude": -44.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            -44.71875,
-            125.7890625,
-            -44.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            -44.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 27.392899,
-            "UID": "64",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.0775908,
-            "Latitude": -44.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            -44.71875,
-            143.7890625,
-            -44.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            -44.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 77.154904,
-            "UID": "65",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.0308688,
-            "Latitude": -44.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            -44.71875,
-            161.7890625,
-            -44.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            -53.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 348.00574,
-            "UID": "45",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.172052,
-            "Latitude": -53.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            -53.71875,
-            143.7890625,
-            -53.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            -53.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 109.15174,
-            "UID": "46",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.493316,
-            "Latitude": -53.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            -53.71875,
-            161.7890625,
-            -53.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            -53.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 12.526026,
-            "UID": "43",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.219231,
-            "Latitude": -53.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            -53.71875,
-            107.7890625,
-            -53.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            -53.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 68.60983,
-            "UID": "44",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.235875,
-            "Latitude": -53.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            -53.71875,
-            125.7890625,
-            -53.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            125.7890625,
-            -62.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 258.5023,
-            "UID": "25",
-            "Zoom": 0,
-            "Longitude": 126.14062,
-            "Magnitude": 0.104719,
-            "Latitude": -62.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            125.7890625,
-            -62.71875,
-            125.7890625,
-            -62.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            107.7890625,
-            -62.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 120.49045,
-            "UID": "24",
-            "Zoom": 0,
-            "Longitude": 108.14062,
-            "Magnitude": 0.0392168,
-            "Latitude": -62.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            107.7890625,
-            -62.71875,
-            107.7890625,
-            -62.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            161.7890625,
-            -62.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 95.00816,
-            "UID": "27",
-            "Zoom": 0,
-            "Longitude": 162.14062,
-            "Magnitude": 0.0568039,
-            "Latitude": -62.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            161.7890625,
-            -62.71875,
-            161.7890625,
-            -62.71875
-        ]
-    },
-    {
-        "type_": "Point",
-        "flatCoordinates_": [
-            143.7890625,
-            -62.71875
-        ],
-        "flatInteriorPoints_": null,
-        "flatMidpoints_": null,
-        "ends_": [
-            2
-        ],
-        "properties_": {
-            "Direction": 71.637334,
-            "UID": "26",
-            "Zoom": 0,
-            "Longitude": 144.14062,
-            "Magnitude": 0.0500564,
-            "Latitude": -62.859375,
-            "layer": "OSCAR_Sea_Surface_Currents_v1_STD"
-        },
-        "extent_": [
-            143.7890625,
-            -62.71875,
-            143.7890625,
-            -62.71875
         ]
     }
 ];

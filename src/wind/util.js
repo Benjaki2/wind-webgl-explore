@@ -13,7 +13,6 @@ function createShader(gl, type, source) {
 
 export function createProgram(gl, vertexSource, fragmentSource) {
     const program = gl.createProgram();
-    console.log(gl)
     const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexSource);
     const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentSource);
 
