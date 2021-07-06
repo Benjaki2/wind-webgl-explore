@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.0151b9a2.chunk.css",
-    "main.js": "/static/js/main.782b72f9.chunk.js",
-    "main.js.map": "/static/js/main.782b72f9.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4753dd7b.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4753dd7b.js.map",
-    "static/js/2.8b21e4d4.chunk.js": "/static/js/2.8b21e4d4.chunk.js",
-    "static/js/2.8b21e4d4.chunk.js.map": "/static/js/2.8b21e4d4.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.0151b9a2.chunk.css.map": "/static/css/main.0151b9a2.chunk.css.map",
-    "static/js/2.8b21e4d4.chunk.js.LICENSE.txt": "/static/js/2.8b21e4d4.chunk.js.LICENSE.txt"
+    "main.css": "/wind-webgl-explore/static/css/main.0151b9a2.chunk.css",
+    "main.js": "/wind-webgl-explore/static/js/main.782b72f9.chunk.js",
+    "main.js.map": "/wind-webgl-explore/static/js/main.782b72f9.chunk.js.map",
+    "runtime-main.js": "/wind-webgl-explore/static/js/runtime-main.25d738d2.js",
+    "runtime-main.js.map": "/wind-webgl-explore/static/js/runtime-main.25d738d2.js.map",
+    "static/js/2.8b21e4d4.chunk.js": "/wind-webgl-explore/static/js/2.8b21e4d4.chunk.js",
+    "static/js/2.8b21e4d4.chunk.js.map": "/wind-webgl-explore/static/js/2.8b21e4d4.chunk.js.map",
+    "index.html": "/wind-webgl-explore/index.html",
+    "static/css/main.0151b9a2.chunk.css.map": "/wind-webgl-explore/static/css/main.0151b9a2.chunk.css.map",
+    "static/js/2.8b21e4d4.chunk.js.LICENSE.txt": "/wind-webgl-explore/static/js/2.8b21e4d4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.4753dd7b.js",
+    "static/js/runtime-main.25d738d2.js",
     "static/js/2.8b21e4d4.chunk.js",
     "static/css/main.0151b9a2.chunk.css",
     "static/js/main.782b72f9.chunk.js"
