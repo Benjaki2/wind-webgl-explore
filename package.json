@@ -1,7 +1,7 @@
 {
   "name": "webgl_render",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://benjaki2.github.io/wind-webgl-explore",
   "dependencies": {
     "@babel/core": "7.12.3",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
